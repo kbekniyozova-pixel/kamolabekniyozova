@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kamola Bekniyozova — Data & Programme Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1C3D5E; --ink-mid: #2E5377; --slate: #6B88A0;
+    --green: #1A7A56; --green-lt: #E5F5EE; --green-mid: #25A070;
+    --sand: #F5F1EB; --white: #FAFAF8; --border: rgba(28,61,94,0.10);
+    --font-d: 'Playfair Display', Georgia, serif;
+    --font-b: 'Inter', sans-serif; --font-m: 'JetBrains Mono', monospace;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-b); background: var(--white); color: var(--ink); line-height: 1.7; font-size: 16px; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,250,248,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 60px; }
+  .nav-brand { font-family: var(--font-d); font-size: 16px; font-weight: 500; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: var(--slate); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--green); }
+
+  #hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, #1C3D5E 0%, #26527A 50%, #1E4A6E 100%); position: relative; overflow: hidden; padding: 80px 2.5rem 4rem; }
+  .hero-bg { position: absolute; inset: 0; opacity: 0.06; }
+  .hero-inner { position: relative; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; width: 100%; }
+  .hero-eyebrow { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em; color: var(--green-mid); text-transform: uppercase; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--green-mid); }
+  h1 { font-family: var(--font-d); font-size: clamp(36px,4.5vw,54px); font-weight: 700; color: #fff; line-height: 1.12; margin-bottom: 1.5rem; }
+  h1 em { color: var(--green-mid); font-style: normal; }
+  .hero-tagline { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.8; max-width: 440px; margin-bottom: 2.5rem; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-b); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 13px 24px; border-radius: 4px; border: none; transition: all 0.2s; cursor: pointer; }
+  .btn-green { background: var(--green); color: #fff; }
+  .btn-green:hover { background: var(--green-mid); }
+  .btn-ghost { background: transparent; color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.22); }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.55); color: #fff; }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.10); border-radius: 6px; overflow: hidden; margin-top: 3rem; }
+  .h-stat { background: rgba(28,61,94,0.55); padding: 1.5rem; }
+  .h-stat .num { font-family: var(--font-d); font-size: 34px; font-weight: 700; color: #fff; }
+  .h-stat .num span { color: var(--green-mid); }
+  .h-stat .label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 3px; }
+  .hero-globe { display: flex; align-items: center; justify-content: center; }
+
+  section { padding: 6rem 2.5rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em; color: var(--green); text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--green); }
+  h2.section-title { font-family: var(--font-d); font-size: clamp(26px,3.5vw,40px); font-weight: 500; color: var(--ink); line-height: 1.2; margin-bottom: 3.5rem; }
+  h2.section-title strong { color: var(--green); font-weight: 700; }
+
+  #about { background: var(--sand); }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: start; }
+  .about-text p { color: var(--ink-mid); margin-bottom: 1.25rem; font-size: 16px; }
+  .skill-row { margin-bottom: 1.1rem; }
+  .skill-row label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .skill-row label span { font-family: var(--font-m); font-size: 11px; color: var(--slate); }
+  .skill-bar { height: 4px; background: rgba(28,61,94,0.10); border-radius: 99px; overflow: hidden; }
+  .skill-fill { height: 100%; background: var(--green); border-radius: 99px; transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(0.4,0,0.2,1); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2rem; }
+  .tag { font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 99px; background: var(--green-lt); color: var(--green); border: 1px solid rgba(26,122,86,0.2); }
+
+  #experience { background: var(--white); }
+  .timeline { display: flex; flex-direction: column; }
+  .tl-item { display: grid; grid-template-columns: 200px 1fr; gap: 0 3rem; padding-bottom: 3rem; position: relative; }
+  .tl-item:not(:last-child)::after { content: ''; position: absolute; left: 200px; top: 8px; bottom: 0; width: 1px; background: var(--border); transform: translateX(calc(1.5rem - 0.5px)); }
+  .tl-meta { padding-top: 2px; }
+  .tl-date { font-family: var(--font-m); font-size: 11px; color: var(--slate); letter-spacing: 0.06em; }
+  .tl-org { font-size: 13px; font-weight: 600; color: var(--green); margin-top: 4px; }
+  .tl-loc { font-size: 12px; color: var(--slate); margin-top: 2px; }
+  .tl-body { padding-left: 3rem; position: relative; }
+  .tl-body::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--white); border: 2px solid var(--green); }
+  .tl-role { font-family: var(--font-d); font-size: 19px; font-weight: 500; color: var(--ink); margin-bottom: 1rem; }
+  .tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .tl-bullets li { font-size: 14.5px; color: var(--ink-mid); padding-left: 1.25rem; position: relative; }
+  .tl-bullets li::before { content: '\2014'; position: absolute; left: 0; color: var(--green); }
+
+  #research { background: #1C3D5E; }
+  #research .section-eyebrow { color: var(--green-mid); }
+  #research .section-eyebrow::before { background: var(--green-mid); }
+  #research h2.section-title { color: #fff; }
+  #research h2.section-title strong { color: var(--green-mid); }
+  .r-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem; }
+  .r-filter-btn { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.08em; padding: 6px 14px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.2s; text-transform: uppercase; }
+  .r-filter-btn:hover, .r-filter-btn.active { background: rgba(37,160,112,0.15); border-color: var(--green-mid); color: var(--green-mid); }
+  .research-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .r-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 8px; padding: 1.75rem 2rem; transition: border-color 0.2s, background 0.2s; display: flex; flex-direction: column; }
+  .r-card:hover { border-color: rgba(37,160,112,0.4); background: rgba(255,255,255,0.07); }
+  .r-card.hidden { display: none; }
+  .r-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; }
+  .r-tag { font-family: var(--font-m); font-size: 10px; padding: 3px 9px; border-radius: 3px; background: rgba(37,160,112,0.12); color: var(--green-mid); letter-spacing: 0.06em; border: 1px solid rgba(37,160,112,0.22); }
+  .r-title { font-family: var(--font-d); font-size: 17px; font-weight: 500; color: #fff; margin-bottom: 0.4rem; line-height: 1.35; }
+  .r-institution { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; color: var(--green-mid); text-transform: uppercase; margin-bottom: 1rem; }
+  .r-abstract { font-size: 13.5px; color: rgba(255,255,255,0.58); line-height: 1.75; flex: 1; }
+  .r-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 1.25rem 0; }
+  .r-detail { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+  .r-detail-block h4 { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 5px; font-weight: 500; }
+  .r-detail-block p { font-size: 12.5px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+  .r-findings { display: flex; flex-direction: column; gap: 0.6rem; }
+  .r-findings-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 0.5rem; font-weight: 500; }
+  .r-finding { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; padding: 0.65rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 4px; border-left: 2px solid var(--green-mid); }
+
+  #education { background: var(--sand); }
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(290px,1fr)); gap: 1.5rem; }
+  .edu-card { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 1.75rem; }
+  .edu-degree { font-family: var(--font-d); font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; }
+  .edu-school { font-size: 14px; font-weight: 600; color: var(--green); margin-bottom: 0.5rem; }
+  .edu-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--slate); margin-bottom: 0.75rem; }
+  .edu-gpa { font-family: var(--font-m); color: var(--green); }
+  .edu-courses { font-size: 13px; color: var(--slate); line-height: 1.65; }
+
+  #awards { background: var(--white); }
+  .awards-list { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1rem; }
+  .award-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: 6px; }
+  .award-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); margin-top: 8px; flex-shrink: 0; }
+  .award-text { font-size: 14px; color: var(--ink-mid); line-height: 1.55; }
+  .award-year { font-family: var(--font-m); font-size: 11px; color: var(--slate); margin-top: 3px; }
+
+  #contact { background: #1C3D5E; text-align: center; }
+  #contact .section-eyebrow { justify-content: center; color: var(--green-mid); }
+  #contact .section-eyebrow::before { display: none; }
+  #contact h2.section-title { color: #fff; margin-bottom: 1rem; }
+  #contact h2.section-title strong { color: var(--green-mid); }
+  #contact > .container > p { color: rgba(255,255,255,0.55); max-width: 480px; margin: 0 auto 2.5rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; }
+  .contact-chip { display: inline-flex; align-items: center; padding: 12px 22px; border-radius: 4px; font-size: 14px; font-weight: 500; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.75); transition: all 0.2s; }
+  .contact-chip:hover { border-color: var(--green-mid); color: var(--green-mid); }
+  .contact-chip.primary { background: var(--green); border-color: var(--green); color: #fff; }
+  .contact-chip.primary:hover { background: var(--green-mid); border-color: var(--green-mid); }
+
+  footer { background: #162F4A; border-top: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 2.5rem; text-align: center; font-size: 12px; color: rgba(255,255,255,0.25); letter-spacing: 0.04em; }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  .fade-up { opacity: 0; }
+  .fade-up.visible { animation: fadeUp 0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-globe { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .tl-item { grid-template-columns: 1fr; }
+    .tl-item::after { display: none; }
+    .tl-body { padding-left: 1.25rem; }
+    .research-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.25rem; }
+    nav { padding: 0 1.25rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .skill-fill { transition: none; }
+    .fade-up { opacity: 1; animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#hero">Kamola Bekniyozova</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <svg class="hero-bg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" fill="none">
+    <line x1="0" y1="200" x2="1200" y2="200" stroke="white" stroke-width="0.5"/>
+    <line x1="0" y1="400" x2="1200" y2="400" stroke="white" stroke-width="0.5"/>
+    <line x1="0" y1="600" x2="1200" y2="600" stroke="white" stroke-width="0.5"/>
+    <line x1="200" y1="0" x2="200" y2="800" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="0" x2="400" y2="800" stroke="white" stroke-width="0.5"/>
+    <line x1="600" y1="0" x2="600" y2="800" stroke="white" stroke-width="0.5"/>
+    <line x1="800" y1="0" x2="800" y2="800" stroke="white" stroke-width="0.5"/>
+    <line x1="1000" y1="0" x2="1000" y2="800" stroke="white" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="2" fill="white"/><circle cx="600" cy="200" r="2" fill="white"/>
+    <circle cx="400" cy="400" r="2" fill="white"/><circle cx="800" cy="400" r="2" fill="white"/>
+    <circle cx="1000" cy="600" r="2" fill="white"/>
+  </svg>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Data &amp; Programme Analyst</div>
+      <h1>Turning <em>data</em> into development impact.</h1>
+      <p class="hero-tagline">4+ years driving evidence-based decisions across climate resilience, sustainable development, and international investment &mdash; with a toolkit spanning Python, R, STATA, Tableau, and SQL.</p>
+      <div class="hero-cta">
+        <a href="#research" class="btn btn-green">View Research</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat"><div class="num">9<span>+</span></div><div class="label">Countries analysed</div></div>
+        <div class="h-stat"><div class="num">4<span>+</span></div><div class="label">Years experience</div></div>
+        <div class="h-stat"><div class="num">12</div><div class="label">Research projects</div></div>
+        <div class="h-stat"><div class="num">3.84</div><div class="label">Graduate GPA</div></div>
+      </div>
+    </div>
+    <div class="hero-globe">
+      <svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px">
+        <rect width="480" height="320" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <path d="M55 80 L110 70 L130 90 L125 130 L105 160 L80 175 L60 160 L45 130 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+        <path d="M95 185 L130 175 L145 200 L140 255 L115 275 L88 250 L80 215 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+        <path d="M195 60 L240 55 L255 75 L245 100 L215 105 L190 90 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+        <path d="M195 120 L240 112 L260 140 L255 210 L225 235 L195 210 L180 170 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+        <path d="M290 75 L340 68 L360 88 L350 112 L310 115 L285 98 Z" fill="rgba(37,160,112,0.22)" stroke="rgba(37,160,112,0.6)" stroke-width="1.2"/>
+        <path d="M300 60 L420 50 L435 90 L420 140 L370 160 L310 145 L285 115 L290 75 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+        <path d="M330 155 L390 148 L405 175 L385 205 L345 210 L320 185 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+        <path d="M370 220 L430 215 L445 250 L425 270 L375 268 L360 245 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+        <circle cx="405" cy="165" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="405" cy="165" r="2.5" fill="#25A070"/>
+        <circle cx="348" cy="162" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="348" cy="162" r="2.5" fill="#25A070"/>
+        <circle cx="360" cy="145" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="360" cy="145" r="2.5" fill="#25A070"/>
+        <circle cx="95" cy="155" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="95" cy="155" r="2.5" fill="#25A070"/>
+        <circle cx="110" cy="225" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="110" cy="225" r="2.5" fill="#25A070"/>
+        <circle cx="128" cy="148" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="128" cy="148" r="2.5" fill="#25A070"/>
+        <circle cx="215" cy="95" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="215" cy="95" r="2.5" fill="#25A070"/>
+        <circle cx="315" cy="88" r="7" fill="rgba(37,160,112,0.45)" stroke="#25A070" stroke-width="1.5"/><circle cx="315" cy="88" r="3.5" fill="#25A070"/>
+        <text x="20" y="300" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.38)">&#9679; Countries researched or worked in</text>
+        <text x="20" y="315" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.38)">&#9679; Home country (Uzbekistan)</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-eyebrow">Profile</div>
+    <h2 class="section-title">Analytical rigor meets <strong>global development.</strong></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I am a data and programme analyst with over four years of experience at the intersection of international development, climate resilience, and evidence-based policy. My work spans multi-country data pipelines, results-based monitoring frameworks, and analytical reporting for senior institutional stakeholders.</p>
+        <p>From tracking climate-adaptive interventions across nine countries at Outreach International to building performance dashboards for the UN&#8217;s &#8220;Green Aral Sea&#8221; initiative, I translate complex quantitative and qualitative datasets into decisions that matter.</p>
+        <p>My academic training &mdash; two master&#8217;s degrees and a certificate in Data Analytics &mdash; grounds my applied work in rigorous statistical and econometric methodology. I am equally comfortable writing a Python regression pipeline, designing a STATA do-file for policy evaluation, or presenting findings to a ministerial audience.</p>
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">R</span><span class="tag">STATA</span><span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Excel (Advanced)</span><span class="tag">GTAP</span><span class="tag">International Futures (IFs)</span><span class="tag">Econometrics</span><span class="tag">RBM</span><span class="tag">Climate Resilience</span>
+        </div>
+      </div>
+      <div>
+        <div class="section-eyebrow" style="margin-bottom:1.5rem">Technical proficiency</div>
+        <div class="skill-row"><label>STATA / Econometrics <span>Advanced</span></label><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
+        <div class="skill-row"><label>R (regression, classification) <span>Advanced</span></label><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-row"><label>Python (pandas, sklearn, matplotlib) <span>Advanced</span></label><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-row"><label>Tableau / Power BI <span>Advanced</span></label><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-row"><label>SQL / Data Management <span>Proficient</span></label><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        <div class="skill-row"><label>GTAP / IFs Modeling <span>Proficient</span></label><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="section-eyebrow">Career</div>
+    <h2 class="section-title">Professional <strong>experience.</strong></h2>
+    <div class="timeline">
+      <div class="tl-item fade-up">
+        <div class="tl-meta"><div class="tl-date">Sep 2024 &ndash; Sep 2025</div><div class="tl-org">Green Aral Sea Project</div><div class="tl-loc">Tashkent, Uzbekistan (remote)</div></div>
+        <div class="tl-body">
+          <div class="tl-role">Programme Analyst</div>
+          <ul class="tl-bullets">
+            <li>Ensured timely collection, consolidation, and validation of performance data from implementing partners by cleaning and reconciling datasets using Excel and STATA.</li>
+            <li>Developed dashboards, charts, and data visualizations using Tableau and Excel to communicate complex portfolio data for internal teams and external stakeholders.</li>
+            <li>Contributed analytical inputs to corporate and sectoral reports supporting institutional learning and strategic planning.</li>
+            <li>Performed routine data quality assurance checks, identifying discrepancies between narrative reports and quantitative datasets.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-meta"><div class="tl-date">May 2023 &ndash; Feb 2024</div><div class="tl-org">Outreach International</div><div class="tl-loc">Kansas, MO (remote)</div></div>
+        <div class="tl-body">
+          <div class="tl-role">Field Operations Assistant</div>
+          <ul class="tl-bullets">
+            <li>Managed, cleaned, and validated large multi-country datasets from 9 international partners across the Philippines, Nicaragua, India, Bolivia, Nepal, and Haiti.</li>
+            <li>Conducted portfolio-level analysis of climate resilience, sanitation, agriculture, and poverty-reduction programmes.</li>
+            <li>Supported evidence generation for climate-adaptive interventions including rice loan schemes, sanitation financing, eco-stoves, and climate-resilient agriculture.</li>
+            <li>Developed Tableau and Excel dashboards tracking food security, sanitation access, and environmental outcome indicators.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-meta"><div class="tl-date">Mar &ndash; Jun 2024</div><div class="tl-org">University of Denver</div><div class="tl-loc">Denver, CO</div></div>
+        <div class="tl-body">
+          <div class="tl-role">Teaching Assistant &mdash; Statistics &amp; Econometrics</div>
+          <ul class="tl-bullets">
+            <li>Supported academic delivery of quantitative coursework for 30 undergraduate students, reviewing analytical assignments and ensuring methodological rigor.</li>
+            <li>Translated complex quantitative concepts into clear, accessible formats for non-technical stakeholders.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-meta"><div class="tl-date">Dec 2020 &ndash; Aug 2022</div><div class="tl-org">Ministry of Investments &amp; Foreign Trade</div><div class="tl-loc">Tashkent, Uzbekistan</div></div>
+        <div class="tl-body">
+          <div class="tl-role">Economist &mdash; Investment Promotion Agency</div>
+          <ul class="tl-bullets">
+            <li>Conducted sectoral and policy data analysis related to investment trends, trade performance, and regulatory reform using R and Excel.</li>
+            <li>Managed trade, investment, and regulatory datasets contributing to Uzbekistan&#8217;s WTO accession process.</li>
+            <li>Coordinated data inputs for Uzbekistan&#8217;s first International Investment Forum, collaborating with ministries, private sector actors, and international partners.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-meta"><div class="tl-date">Nov 2019 &ndash; Nov 2020</div><div class="tl-org">Center for Economic Research and Reforms</div><div class="tl-loc">Tashkent, Uzbekistan</div></div>
+        <div class="tl-body">
+          <div class="tl-role">Research Assistant</div>
+          <ul class="tl-bullets">
+            <li>Designed and implemented surveys to collect project-level data in the agriculture and export sectors.</li>
+            <li>Conducted indicator-based analysis of government subsidy programs using STATA and GTAP, supporting policy effectiveness evaluation.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="container">
+    <div class="section-eyebrow">Scholarship</div>
+    <h2 class="section-title">Research &amp; <strong>analytical projects.</strong></h2>
+    <div class="r-filters">
+      <button class="r-filter-btn active" data-filter="all">All (12)</button>
+      <button class="r-filter-btn" data-filter="python">Python</button>
+      <button class="r-filter-btn" data-filter="r">R</button>
+      <button class="r-filter-btn" data-filter="stata">STATA</button>
+      <button class="r-filter-btn" data-filter="policy">Policy Memo</button>
+      <button class="r-filter-btn" data-filter="climate">Climate &amp; WASH</button>
+    </div>
+    <div class="research-grid">
+
+      <div class="r-card" data-tags="r">
+        <div class="r-tags"><span class="r-tag">R</span><span class="r-tag">Regression</span><span class="r-tag">Classification</span><span class="r-tag">Panel Data</span></div>
+        <div class="r-title">Global Economic Freedom: Governance, Institutions &amp; Market Liberty</div>
+        <div class="r-institution">University of Denver &middot; Advanced Predictive Analysis with R</div>
+        <p class="r-abstract">Empirical investigation into the structural determinants of the Economic Freedom Index across 159 countries (2013&ndash;2016) using 32 indicators. Applied OLS, Ridge/LASSO regularization, and Random Forest classification in R to isolate how government size, legal system quality, and property rights interact to predict economic freedom scores.</p>
+        <hr class="r-divider"/>
+        <div class="r-findings-label">Key findings</div>
+        <div class="r-findings">
+          <div class="r-finding">Legal system quality emerged as the strongest predictor of EFI, outperforming government expenditure size.</div>
+          <div class="r-finding">Random Forest achieved 84% classification accuracy; legal integrity was the dominant feature by importance score.</div>
+        </div>
+      </div>
+
+      <div class="r-card" data-tags="climate policy">
+        <div class="r-tags"><span class="r-tag">IFs Model</span><span class="r-tag">Scenario Analysis</span><span class="r-tag">SDGs</span><span class="r-tag">Africa</span></div>
+        <div class="r-title">Women&#8217;s Education as a Driver of Economic Development in Africa</div>
+        <div class="r-institution">University of Denver &middot; Modeling for Development</div>
+        <p class="r-abstract">Used the International Futures (IFs) system to evaluate how accelerated investment in women&#8217;s education reshapes economic and health trajectories across Africa through 2060. Three counterfactual policy scenarios compared against SDG 3 and SDG 4 benchmarks across six focus countries including Ethiopia, Niger, Mali, and DRC.</p>
+        <hr class="r-divider"/>
+        <div class="r-findings-label">Key findings</div>
+        <div class="r-findings">
+          <div class="r-finding">A 20pp increase in female secondary enrollment produces a compounding GDP-per-capita premium of 12&ndash;18% by 2060 relative to baseline.</div>
+          <div class="r-finding">Quality-adjusted scenario reduced under-5 mortality by an estimated 34 deaths per 1,000 live births beyond the enrollment-only scenario.</div>
+        </div>
+      </div>
+
+      <div class="r-card" data-tags="r">
+        <div class="r-tags"><span class="r-tag">R</span><span class="r-tag">Trade Analysis</span><span class="r-tag">Dissertation</span><span class="r-tag">Score 5/5</span></div>
+        <div class="r-title">Uzbekistan&#8217;s Export Potential in the Context of Globalization</div>
+        <div class="r-institution">University of World Economy &amp; Diplomacy &middot; MA Dissertation</div>
+        <p class="r-abstract">Master&#8217;s dissertation analyzing Uzbekistan&#8217;s trade performance from 2015 to 2021, examining key export sectors and trading partners using R. Identified structural challenges in developing the service sector and provided policy recommendations to enhance competitiveness and export diversification. Awarded a top score of 5/5.</p>
+        <hr class="r-divider"/>
+        <div class="r-detail">
+          <div class="r-detail-block"><h4>Methods</h4><p>Comparative trade analysis, RCA indices, sector-level regression in R.</p></div>
+          <div class="r-detail-block"><h4>Coverage</h4><p>7-year panel (2015&ndash;2021) &middot; partners: Russia, China, EU, Central Asia.</p></div>
+        </div>
+      </div>
+
+      <div class="r-card" data-tags="stata climate">
+        <div class="r-tags"><span class="r-tag">STATA</span><span class="r-tag">GTAP</span><span class="r-tag">CGE Model</span><span class="r-tag">WTO</span></div>
+        <div class="r-title">Agricultural Liberalization &amp; WTO Compatibility for Uzbekistan&#8217;s Accession</div>
+        <div class="r-institution">Center for Economic Research and Reforms &middot; Policy Research</div>
+        <p class="r-abstract">Analyzed surveys on Uzbekistan&#8217;s agricultural export sector and evaluated government subsidies against WTO rules. Modeled four agricultural liberalization scenarios using STATA and GTAP, assessing WTO compatibility, export competitiveness, and distributional consequences from full subsidy elimination to climate-resilient crop reallocation.</p>
+        <hr class="r-divider"/>
+        <div class="r-findings-label">Key findings</div>
+        <div class="r-findings">
+          <div class="r-finding">Full subsidy elimination yields aggregate welfare gains but disproportionately burdens smallholder farmers.</div>
+          <div class="r-finding">Subsidy reallocation to climate-resilient crops dominated all scenarios on combined welfare and food security metrics.</div>
+        </div>
+      </div>
+
+      <div class="r-card" data-tags="python">
+        <div class="r-tags"><span class="r-tag">Python</span><span class="r-tag">Regression</span><span class="r-tag">Visualization</span><span class="r-tag">156 Countries</span></div>
+        <div class="r-title">Determinants of Life Expectancy: A Data-Driven Cross-Country Analysis</div>
+        <div class="r-institution">University of Denver &middot; Python for Data Analytics</div>
+        <p class="r-abstract">Python-based analysis exploring how economic, social, and health factors influence life expectancy across 156 countries. Full pipeline from data cleaning and EDA through correlation analysis and OLS regression (statsmodels, sklearn) to quantify the independent impact of income, health expenditure, inequality, education, and water access on life outcomes.</p>
+        <hr class="r-divider"/>
+        <div class="r-findings-label">Key findings</div>
+        <div class="r-findings">
+          <div class="r-finding">Health system inputs explain more life expectancy variance than GDP per capita in low-income countries.</div>
+          <div class="r-finding">Full model: R&sup2; = 0.87. Gini coefficient negatively associated with life expectancy even after controlling for income.</div>
+        </div>
+      </div>
+
+      <div class="r-card" data-tags="python">
+        <div class="r-tags"><span class="r-tag">Python</span><span class="r-tag">Tableau</span><span class="r-tag">Customer Analytics</span><span class="r-tag">NLP</span></div>
+        <div class="r-title">British Airways Data Science Simulation: Customer Analytics &amp; Flight Optimization</div>
+        <div class="r-institution">British Airways / Forage &middot; Professional Simulation</div>
+        <p class="r-abstract">Completed a real-world data science simulation working on customer data analysis and flight optimization. Conducted sentiment analysis on customer reviews using NLP techniques, built a classification model to predict booking completion, and designed a Tableau dashboard communicating performance insights to a non-technical business audience.</p>
+        <hr class="r-divider"/>
+        <div class="r-detail">
+          <div class="r-detail-block"><h4>Tasks</h4><p>Sentiment analysis &middot; predictive booking model &middot; Tableau dashboard design.</p></div>
+          <div class="r-detail-block"><h4>Tools</h4><p>Python (pandas, sklearn, nltk) &middot; Tableau &middot; data storytelling.</p></div>
+        </div>
+      </div>
+
+      <div class="r-card" data-tags="r">
+        <div class="r-tags"><span class="r-tag">R</span><span class="r-tag">Time-Series</span><span class="r-tag">Macro Analysis</span><span class="r-tag">Sanctions</span></div>
+        <div class="r-title">Economic Sanctions &amp; the Russian Economy: A Macroeconomic Impact Assessment</div>
+        <div class="r-institution">Research Assistance &middot; Macro Policy Analysis</div>
+        <p class="r-abstract">Assisted in examining the macroeconomic consequences of international sanctions on Russia following its invasion of Ukraine using real-world economic indicators and time-series data. Performed rigorous data cleaning, visualization, and statistical exploration in R to assess sanction impacts on energy exports, foreign exchange reserves, inflation, and industrial output.</p>
+        <hr class="r-divider"/>
+        <div class="r-detail">
+          <div class="r-detail-block"><h4>Methods</h4><p>Time-series analysis &middot; comparative pre/post evaluation &middot; sector-level indicator tracking.</p></div>
+          <div class="r-detail-block"><h4>Data</h4><p>IMF, World Bank, Rosstat, OECD &middot; 2021&ndash;2024 panel.</p></div>
+        </div>
+      </div>
+
+      <div class="r-card" data-tags="policy">
+        <div class="r-tags"><span class="r-tag">Trade Policy</span><span class="r-tag">FTA Analysis</span><span class="r-tag">Policy Memo</span><span class="r-tag">Geopolitics</span></div>
+        <div class="r-title">U.S.&ndash;Cuba Free Trade Agreement: Economic &amp; Geopolitical Implications</div>
+        <div class="r-institution">University of Denver &middot; International Trade Policy</div>
+        <p class="r-abstract">Developed a comprehensive policy memo evaluating the economic and geopolitical implications of a U.S.&ndash;Cuba FTA. Combined gravity model trade potential analysis with qualitative policy assessment covering OFAC sanctions history, WTO accession pathways, and U.S. domestic political constraints to deliver a staged liberalization roadmap for policymakers.</p>
+        <hr class="r-divider"/>
+        <div class="r-detail">
+          <div class="r-detail-block"><h4>Framework</h4><p>Gravity model &middot; USTR policy tools &middot; OFAC sanctions landscape &middot; FTA case studies.</p></div>
+          <div class="r-detail-block"><h4>Outcome</h4><p>Sector-by-sector sequencing roadmap with Congressional feasibility assessment.</p></div>
+        </div>
+      </div>
+
+      <div class="r-card" data-tags="policy">
+        <div class="r-tags"><span class="r-tag">Trade Policy</span><span class="r-tag">Supply Chains</span><span class="r-tag">IRA Analysis</span><span class="r-tag">Co-authored</span></div>
+        <div class="r-title">U.S.&ndash;Indonesia Nickel Trade: Supply Chain Resilience &amp; the Inflation Reduction Act</div>
+        <div class="r-institution">Maxwell School, Syracuse University &middot; Exchange Program</div>
+        <p class="r-abstract">Co-authored policy memo assessing the strategic implications of U.S.&ndash;Indonesia nickel trade. Analyzed Indonesia&#8217;s export restrictions on unprocessed nickel, IRA critical minerals provisions, and ESG dimensions of nickel processing expansion. Concluded that a bilateral critical minerals partnership could enhance supply chain resilience and support clean energy goals.</p>
+        <hr class="r-divider"/>
+        <div class="r-findings-label">Key findings</div>
+        <div class="r-findings">
+          <div class="r-finding">Indonesia holds over 22% of global nickel reserves; IRA &#8220;foreign entity of concern&#8221; provisions create a structural policy paradox between clean energy and supply chain decoupling goals.</div>
+          <div class="r-finding">Environmental governance gaps present a DFC financing opportunity linked to ESG conditionality.</div>
+        </div>
+      </div>
+
+      <div class="r-card" data-tags="climate stata">
+        <div class="r-tags"><span class="r-tag">Survey Analysis</span><span class="r-tag">Haiti</span><span class="r-tag">Food Security</span><span class="r-tag">SDG 2 &amp; 4</span></div>
+        <div class="r-title">School Meal Program Evaluation in Haiti: Nutrition, Attendance &amp; Community Impact</div>
+        <div class="r-institution">Outreach International &middot; Field Research</div>
+        <p class="r-abstract">Contributed to an evaluation of the School Meal Program in Haiti, assessing whether meal provision improved school enrollment, attendance rates, and child nutritional indicators among vulnerable populations. Responsibilities included cleaning and validating household and school-level survey data, comparative analysis across program and control communities, and bibliography compilation.</p>
+        <hr class="r-divider"/>
+        <div class="r-detail">
+          <div class="r-detail-block"><h4>Methods</h4><p>Survey data cleaning &middot; comparative pre/post analysis &middot; outcome indicator tracking.</p></div>
+          <div class="r-detail-block"><h4>Focus areas</h4><p>School attendance &middot; child nutrition &middot; community food security &middot; SDG 2 &amp; 4.</p></div>
+        </div>
+      </div>
+
+      <div class="r-card" data-tags="climate">
+        <div class="r-tags"><span class="r-tag">Tableau</span><span class="r-tag">WASH</span><span class="r-tag">Community-Led</span><span class="r-tag">SDG 6</span></div>
+        <div class="r-title">Collective Action for Improved Sanitation: Community-Led Latrine Projects</div>
+        <div class="r-institution">Outreach International &middot; Programme Research</div>
+        <p class="r-abstract">Assisted on a research initiative exploring how community-led collective action models drive improved sanitation access in low-income rural settings. Contributed to data cleaning of partner-reported WASH datasets, bibliography compilation, and Tableau visualizations communicating adoption rates, coverage outcomes, and sanitation financing mechanisms across project communities.</p>
+        <hr class="r-divider"/>
+        <div class="r-detail">
+          <div class="r-detail-block"><h4>Contribution</h4><p>Dataset cleaning &middot; Tableau visualization &middot; evidence synthesis.</p></div>
+          <div class="r-detail-block"><h4>Focus</h4><p>WASH sector &middot; SDG 6 &middot; collective action theory &middot; sanitation financing.</p></div>
+        </div>
+      </div>
+
+      <div class="r-card" data-tags="climate">
+        <div class="r-tags"><span class="r-tag">Tableau</span><span class="r-tag">WASH</span><span class="r-tag">Clean Water</span><span class="r-tag">SDG 6</span></div>
+        <div class="r-title">Clean Water &amp; Sanitation: Strategies &amp; Community-Led Solutions</div>
+        <div class="r-institution">Outreach International &middot; Programme Research</div>
+        <p class="r-abstract">Assisted on a companion research project documenting community-led strategies for expanding clean water access and sustainable sanitation coverage in Latin America and the Caribbean. Contributed to data cleaning and quality assurance of multi-partner datasets, evidence bibliography compilation, and visualizations illustrating strategy effectiveness and household-level water access outcomes.</p>
+        <hr class="r-divider"/>
+        <div class="r-detail">
+          <div class="r-detail-block"><h4>Contribution</h4><p>Data cleaning &middot; visualization design in Tableau &middot; evidence bibliography.</p></div>
+          <div class="r-detail-block"><h4>Focus</h4><p>Clean water access &middot; SDG 6 &middot; climate-resilient WASH infrastructure.</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <div class="section-eyebrow">Credentials</div>
+    <h2 class="section-title">Education &amp; <strong>training.</strong></h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">MA in Global Economic Affairs</div>
+        <div class="edu-school">University of Denver &middot; Josef Korbel School</div>
+        <div class="edu-meta"><span>Denver, CO &middot; 2022&ndash;2024</span><span class="edu-gpa">GPA 3.84 / 4.0</span></div>
+        <div class="edu-courses">Econometrics &middot; Statistics &middot; Advanced Predictive Analyses with R &middot; Python Programming &middot; Modeling for Development &middot; International Trade &middot; International Monetary Relations<br/><br/>Concentration: Sustainable Development &middot; Certificate in Data Analytics</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">MA in International Economics &amp; Management</div>
+        <div class="edu-school">University of World Economy and Diplomacy</div>
+        <div class="edu-meta"><span>Tashkent &middot; 2021&ndash;2022</span><span class="edu-gpa">GPA 4.29 / 5.0</span></div>
+        <div class="edu-courses">Research Methodology &middot; Applied Econometrics &middot; Strategic Management<br/><br/>Thesis: &#8220;The Export Potential of Uzbekistan in the Context of Globalization&#8221; &mdash; Score 5/5</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">BA in World Economy &amp; International Economic Relations</div>
+        <div class="edu-school">International Islamic Academy of Uzbekistan</div>
+        <div class="edu-meta"><span>Tashkent &middot; 2017&ndash;2022</span><span class="edu-gpa">GPA 89 / 100</span></div>
+        <div class="edu-courses">Water Resources &amp; Environmental Economics &middot; Quantitative Methods in Economics &middot; Strategies for Economic Development<br/><br/>Minor in Mathematics</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="awards">
+  <div class="container">
+    <div class="section-eyebrow">Recognition</div>
+    <h2 class="section-title">Awards &amp; <strong>achievements.</strong></h2>
+    <div class="awards-list">
+      <div class="award-item"><div class="award-dot"></div><div><div class="award-text">AMG Bank Endowed Fellowship &mdash; full merit scholarship, University of Denver</div><div class="award-year">2022&ndash;2024</div></div></div>
+      <div class="award-item"><div class="award-dot"></div><div><div class="award-text">Presidential Scholarship named after Islam Karimov (1 of 600 recipients nationally)</div><div class="award-year">2022</div></div></div>
+      <div class="award-item"><div class="award-dot"></div><div><div class="award-text">1st Place &mdash; Republican Olympiad in International Economics (1 of 1,000 participants)</div><div class="award-year">2021</div></div></div>
+      <div class="award-item"><div class="award-dot"></div><div><div class="award-text">Dean&#8217;s Research Award for Master&#8217;s Students</div><div class="award-year">2021</div></div></div>
+      <div class="award-item"><div class="award-dot"></div><div><div class="award-text">Fully funded delegate &mdash; ICYF International Summer Camp</div><div class="award-year">2021</div></div></div>
+      <div class="award-item"><div class="award-dot"></div><div><div class="award-text">Finalist &mdash; Sustainable Development Goals in Central Asia Contest (Goal 9)</div><div class="award-year">2020</div></div></div>
+      <div class="award-item"><div class="award-dot"></div><div><div class="award-text">Finalist &mdash; SUSI Madeleine K. Albright Young Women Leaders Program</div><div class="award-year">2019</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-eyebrow" style="justify-content:center">Get in touch</div>
+    <h2 class="section-title" style="text-align:center">Open to <strong>opportunities.</strong></h2>
+    <p>Currently exploring roles in international development data and programme analytics &mdash; particularly with the World Bank, UNDP, and related multilateral institutions. I&rsquo;d love to connect.</p>
+    <div class="contact-links">
+      <a href="mailto:kbekniyozova@gmail.com" class="contact-chip primary">kbekniyozova@gmail.com</a>
+      <a href="tel:7206783053" class="contact-chip">+1 (720) 678-3053</a>
+      <a href="https://linkedin.com/in/kbekniyozova" class="contact-chip" target="_blank">LinkedIn</a>
+      <a href="#" class="contact-chip">Arlington, VA</a>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; 2026 Kamola Bekniyozova &middot; Data &amp; Programme Analyst &middot; Arlington, VA</footer>
+
+<script>
+  const obs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  const sfObs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.style.transform = 'scaleX(1)'; sfObs.unobserve(x.target); } }), { threshold: 0.3 });
+  document.querySelectorAll('.skill-fill').forEach(el => sfObs.observe(el));
+  document.querySelectorAll('.r-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.r-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.r-card').forEach(card => {
+        const tags = card.dataset.tags || '';
+        card.classList.toggle('hidden', filter !== 'all' && !tags.includes(filter));
+      });
+    });
+  });
+</script>
+</body>
+</html>
