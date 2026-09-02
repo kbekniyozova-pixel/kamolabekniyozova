@@ -25,7 +25,7 @@
 
   #hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, #1C3D5E 0%, #26527A 50%, #1E4A6E 100%); position: relative; overflow: hidden; padding: 80px 2.5rem 4rem; }
   .hero-bg { position: absolute; inset: 0; opacity: 0.06; }
-  .hero-inner { position: relative; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; width: 100%; }
+  .hero-inner { position: relative; max-width: 860px; margin: 0 auto; width: 100%; }
   .hero-eyebrow { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em; color: var(--green-mid); text-transform: uppercase; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
   .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--green-mid); }
   h1 { font-family: var(--font-d); font-size: clamp(36px,4.5vw,54px); font-weight: 700; color: #fff; line-height: 1.12; margin-bottom: 1.5rem; }
@@ -144,15 +144,16 @@
 
   /* TRAINING */
   #training { background: var(--white); }
-  .training-list { display: flex; flex-direction: column; gap: 1.5rem; }
-  .tr-card { border: 1px solid var(--border); border-radius: 8px; padding: 1.75rem 2rem; display: grid; grid-template-columns: 1fr auto; gap: 0.5rem 2rem; align-items: start; transition: border-color 0.2s; }
-  .tr-card:hover { border-color: rgba(26,122,86,0.3); }
-  .tr-name { font-family: var(--font-d); font-size: 18px; font-weight: 500; color: var(--ink); grid-column: 1; }
-  .tr-provider { font-size: 13px; color: var(--green); font-weight: 600; margin-top: 2px; }
-  .tr-date { font-family: var(--font-m); font-size: 11px; color: var(--slate); grid-column: 2; grid-row: 1 / 3; text-align: right; white-space: nowrap; padding-top: 4px; }
-  .tr-loc-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--slate); background: var(--sand); padding: 3px 10px; border-radius: 99px; margin-top: 6px; }
-  .tr-bullets { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; grid-column: 1 / -1; }
-  .tr-bullets li { font-size: 14px; color: var(--ink-mid); padding-left: 1.25rem; position: relative; line-height: 1.6; }
+  .training-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .tr-card { border: none; border-bottom: 1px solid var(--border); border-radius: 0; padding: 1.1rem 1.5rem; display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 2rem; align-items: start; transition: background 0.2s; }
+  .tr-card:last-child { border-bottom: none; }
+  .tr-card:hover { background: var(--sand); }
+  .tr-name { font-family: var(--font-b); font-size: 14px; font-weight: 600; color: var(--ink); grid-column: 1; }
+  .tr-provider { font-size: 12px; color: var(--green); font-weight: 500; margin-top: 1px; }
+  .tr-date { font-family: var(--font-m); font-size: 11px; color: var(--slate); grid-column: 2; grid-row: 1 / 3; text-align: right; white-space: nowrap; padding-top: 2px; }
+  .tr-loc-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--slate); margin-top: 3px; }
+  .tr-bullets { list-style: none; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.3rem; grid-column: 1 / -1; }
+  .tr-bullets li { font-size: 13px; color: var(--ink-mid); padding-left: 1.1rem; position: relative; line-height: 1.55; }
   .tr-bullets li::before { content: '\2014'; position: absolute; left: 0; color: var(--green); }
 
   @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
@@ -229,29 +230,6 @@
         <div class="h-stat"><div class="num">3.84</div><div class="label">Graduate GPA</div></div>
       </div>
     </div>
-    <div class="hero-globe">
-      <svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px">
-        <rect width="480" height="320" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-        <path d="M55 80 L110 70 L130 90 L125 130 L105 160 L80 175 L60 160 L45 130 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
-        <path d="M95 185 L130 175 L145 200 L140 255 L115 275 L88 250 L80 215 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
-        <path d="M195 60 L240 55 L255 75 L245 100 L215 105 L190 90 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
-        <path d="M195 120 L240 112 L260 140 L255 210 L225 235 L195 210 L180 170 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
-        <path d="M290 75 L340 68 L360 88 L350 112 L310 115 L285 98 Z" fill="rgba(37,160,112,0.22)" stroke="rgba(37,160,112,0.6)" stroke-width="1.2"/>
-        <path d="M300 60 L420 50 L435 90 L420 140 L370 160 L310 145 L285 115 L290 75 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
-        <path d="M330 155 L390 148 L405 175 L385 205 L345 210 L320 185 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
-        <path d="M370 220 L430 215 L445 250 L425 270 L375 268 L360 245 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
-        <circle cx="405" cy="165" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="405" cy="165" r="2.5" fill="#25A070"/>
-        <circle cx="348" cy="162" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="348" cy="162" r="2.5" fill="#25A070"/>
-        <circle cx="360" cy="145" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="360" cy="145" r="2.5" fill="#25A070"/>
-        <circle cx="95" cy="155" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="95" cy="155" r="2.5" fill="#25A070"/>
-        <circle cx="110" cy="225" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="110" cy="225" r="2.5" fill="#25A070"/>
-        <circle cx="128" cy="148" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="128" cy="148" r="2.5" fill="#25A070"/>
-        <circle cx="215" cy="95" r="5" fill="rgba(37,160,112,0.3)" stroke="#25A070" stroke-width="1.5"/><circle cx="215" cy="95" r="2.5" fill="#25A070"/>
-        <circle cx="315" cy="88" r="7" fill="rgba(37,160,112,0.45)" stroke="#25A070" stroke-width="1.5"/><circle cx="315" cy="88" r="3.5" fill="#25A070"/>
-        <text x="20" y="300" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.38)">&#9679; Countries researched or worked in</text>
-        <text x="20" y="315" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.38)">&#9679; Home country (Uzbekistan)</text>
-      </svg>
-    </div>
   </div>
 </section>
 
@@ -261,11 +239,12 @@
     <h2 class="section-title">Analytical rigor meets <strong>global development.</strong></h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>I am a data and programme analyst with over four years of experience at the intersection of international development, climate resilience, and evidence-based policy. My work spans multi-country data pipelines, results-based monitoring frameworks, and analytical reporting for senior institutional stakeholders.</p>
-        <p>From tracking climate-adaptive interventions across nine countries at Outreach International to building performance dashboards for the UN&#8217;s &#8220;Green Aral Sea&#8221; initiative, I translate complex quantitative and qualitative datasets into decisions that matter.</p>
-        <p>My academic training &mdash; two master&#8217;s degrees and a certificate in Data Analytics &mdash; grounds my applied work in rigorous statistical and econometric methodology. I am equally comfortable writing a Python regression pipeline, designing a STATA do-file for policy evaluation, or presenting findings to a ministerial audience.</p>
+        <p>I grew up in Uzbekistan, won the national economics olympiad at 21, and went on to work inside a government ministry advising on WTO accession — all before earning a master's degree in Washington DC on a full merit scholarship. That path gave me something most analysts don't have: I understand both how data is produced in the field and how it lands in a policy room.</p>
+        <p>Over four years I have managed datasets from 9 countries, built dashboards used by donor teams for quarterly reporting, and contributed analytical inputs to reports informing investment decisions at the ministerial level. My work sits at the intersection of rigorous quantitative methods and the kind of context that only comes from working inside the institutions you're trying to change.</p>
+        <p>I am fluent in English, Russian, and Uzbek — a combination that gives me direct operational access across Central Asia, Eastern Europe, and ECA-region multilateral programmes. I am equally comfortable running a Python regression pipeline, facilitating a policy workshop, or translating findings for a non-technical audience.</p>
         <div class="skill-tags">
           <span class="tag">Python</span><span class="tag">R</span><span class="tag">STATA</span><span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Excel (Advanced)</span><span class="tag">GTAP</span><span class="tag">International Futures (IFs)</span><span class="tag">Econometrics</span><span class="tag">RBM</span><span class="tag">Climate Resilience</span>
+          <span class="tag" style="background:#EBF3FF;color:#1A4A8A;border-color:rgba(26,74,138,0.2)">🌐 English</span><span class="tag" style="background:#EBF3FF;color:#1A4A8A;border-color:rgba(26,74,138,0.2)">🌐 Russian</span><span class="tag" style="background:#EBF3FF;color:#1A4A8A;border-color:rgba(26,74,138,0.2)">🌐 Uzbek</span><span class="tag" style="background:#EBF3FF;color:#1A4A8A;border-color:rgba(26,74,138,0.2)">🌐 Arabic (elementary)</span>
         </div>
       </div>
       <div>
@@ -291,10 +270,10 @@
         <div class="tl-body">
           <div class="tl-role">Programme Analyst</div>
           <ul class="tl-bullets">
-            <li>Ensured timely collection, consolidation, and validation of performance data from implementing partners by cleaning and reconciling datasets using Excel and STATA.</li>
-            <li>Developed dashboards, charts, and data visualizations using Tableau and Excel to communicate complex portfolio data for internal teams and external stakeholders.</li>
-            <li>Contributed analytical inputs to corporate and sectoral reports supporting institutional learning and strategic planning.</li>
-            <li>Performed routine data quality assurance checks, identifying discrepancies between narrative reports and quantitative datasets.</li>
+            <li>Collected, consolidated, and validated performance data from 5+ implementing partners, cleaning and reconciling datasets across multiple reporting cycles using Excel and STATA — reducing data discrepancy rate by ensuring consistent formatting and definitions across all submissions.</li>
+            <li>Developed Tableau and Excel dashboards tracking 10+ performance indicators, used by internal teams and external stakeholders for quarterly and annual reporting to project management.</li>
+            <li>Contributed analytical inputs to 3+ sectoral briefs and performance summaries that directly informed project steering committee decisions.</li>
+            <li>Identified and resolved data quality gaps across narrative and quantitative reporting streams, coordinating with 3+ project teams to clarify reporting requirements and resolve inconsistencies.</li>
           </ul>
         </div>
       </div>
@@ -303,10 +282,10 @@
         <div class="tl-body">
           <div class="tl-role">Field Operations Assistant</div>
           <ul class="tl-bullets">
-            <li>Managed, cleaned, and validated large multi-country datasets from 9 international partners across the Philippines, Nicaragua, India, Bolivia, Nepal, and Haiti.</li>
-            <li>Conducted portfolio-level analysis of climate resilience, sanitation, agriculture, and poverty-reduction programmes.</li>
-            <li>Supported evidence generation for climate-adaptive interventions including rice loan schemes, sanitation financing, eco-stoves, and climate-resilient agriculture.</li>
-            <li>Developed Tableau and Excel dashboards tracking food security, sanitation access, and environmental outcome indicators.</li>
+            <li>Managed, cleaned, and validated datasets from 9 international partners spanning 6 countries (Philippines, Nicaragua, India, Bolivia, Nepal, Haiti), processing 1,000+ data points per reporting cycle with zero tolerance for errors under donor requirements.</li>
+            <li>Conducted portfolio-level quantitative and qualitative analysis across 4 thematic areas — climate resilience, sanitation, agriculture, and poverty reduction — covering an estimated 50,000+ direct beneficiaries.</li>
+            <li>Supported evidence generation for 4 climate-adaptive intervention types, producing analysis used in donor-facing impact reports submitted to international funders.</li>
+            <li>Developed Tableau and Excel dashboards tracking 15+ food security, sanitation, and environmental indicators, used by programme staff across 3 continents for performance monitoring.</li>
           </ul>
         </div>
       </div>
@@ -325,9 +304,9 @@
         <div class="tl-body">
           <div class="tl-role">Economist &mdash; Investment Promotion Agency</div>
           <ul class="tl-bullets">
-            <li>Conducted sectoral and policy data analysis related to investment trends, trade performance, and regulatory reform using R and Excel.</li>
-            <li>Managed trade, investment, and regulatory datasets contributing to Uzbekistan&#8217;s WTO accession process.</li>
-            <li>Coordinated data inputs for Uzbekistan&#8217;s first International Investment Forum, collaborating with ministries, private sector actors, and international partners.</li>
+            <li>Conducted data analysis across 5+ investment and trade sectors, producing briefs that fed directly into regulatory reform proposals reviewed at the ministerial level.</li>
+            <li>Managed and structured 3+ years of trade, investment, and regulatory datasets supporting Uzbekistan's active WTO accession Working Party submissions.</li>
+            <li>Coordinated data inputs and analytical materials for Uzbekistan's first International Investment Forum, engaging 10+ ministries and international partners — the country's largest investment event to date.</li>
           </ul>
         </div>
       </div>
@@ -625,7 +604,7 @@
         <div class="vol-icon">🏛️</div>
         <div>
           <div class="vol-title">Event Manager &mdash; IMF Family Association (IMFFA)</div>
-          <div class="vol-meta">Kids Holidays Program</div>
+          <div class="vol-meta">Kids Holidays Program &mdash; community organization for spouses of IMF staff</div>
           <div class="vol-loc">Washington, DC &middot; 2024&ndash;Present</div>
         </div>
       </div>
@@ -727,7 +706,7 @@
     <div class="contact-links">
       <a href="mailto:kbekniyozova@gmail.com" class="contact-chip primary">kbekniyozova@gmail.com</a>
       <a href="tel:7206783053" class="contact-chip">+1 (720) 678-3053</a>
-      <a href="https://linkedin.com/in/kbekniyozova" class="contact-chip" target="_blank">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/kamola-bekniyozova-3981621a4/" class="contact-chip" target="_blank">LinkedIn</a>
       <a href="#" class="contact-chip">Arlington, VA</a>
     </div>
   </div>
